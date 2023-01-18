@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-int visited[100][100];
+int visited[65][65];
 
 void BFS(int n, vector<tuple<int, int, int>> arr)
 {
