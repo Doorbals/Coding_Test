@@ -13,7 +13,7 @@ int maxLen = 0;     // 가장 긴 강의
 
 int lowerBound(int n, int m)
 {
-    int start = minBlu, end = sum, mid;   // start : 최선의 경우 최소 블루레이 크기 / end : 최악의 경우의 최소 블루레이 크기(한 강의 제외하고 나머지 모두 길이 1)
+    int start = minBlu, end = sum, mid;   // start : 최선의 경우 최소 블루레이 크기
 
     while (end > start)
     {
