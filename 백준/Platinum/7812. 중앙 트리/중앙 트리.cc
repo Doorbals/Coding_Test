@@ -34,7 +34,7 @@ pli DFS(long long distance, int currentNode)
                 pli tmp = DFS(distance + edges[currentNode][i].second, childNode);
                 result += tmp.first;
                 nodeCount += tmp.second + 1;
-                dp[currentNode].push_back(tili(childNode, tmp.first - (tmp.second + 1) * distance, tmp.second + 1));       // 저장을 어떻게 해야할까?
+                dp[currentNode].push_back(tili(childNode, tmp.first - ((long long)tmp.second + 1) * distance, tmp.second + 1));
                 dpIndex[currentNode][i] = dp[currentNode].size() - 1;
             }
             else
@@ -43,7 +43,6 @@ pli DFS(long long distance, int currentNode)
                 nodeCount += get<2>(dpData);
                 result += get<1>(dpData) + (long long)get<2>(dpData) * distance;
             }
-
             visited[childNode] = false;
         }
     }
