@@ -20,14 +20,3 @@ int solution(int n)
     }
     return count;
 }
-
-int main()
-{
-    ios::sync_with_stdio(false);
-    cin.tie(); cout.tie();
-
-    int n;
-    cin >> n;
-
-    cout << solution(n);
-}
