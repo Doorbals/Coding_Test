@@ -62,16 +62,12 @@ int main()
             return 0;
 
         edges.clear();
-        edges.shrink_to_fit();
         edges.resize(n);
         dp.clear();
-        dp.shrink_to_fit();
         dp.resize(n);
         visited.clear();
-        visited.shrink_to_fit();
         visited.assign(n, false);
         dpIndex.clear();
-        dpIndex.shrink_to_fit();
         dpIndex.resize(n);
 
         for (int i = 0; i < n - 1; i++)
