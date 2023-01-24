@@ -8,8 +8,8 @@ typedef pair<int, int> pii;
 typedef pair<long long, int> pli;
 typedef tuple<int, long long, int> tili;
 
-vector<vector<pii>> edges;   // 각 정점에 대해 (연결 되어있는 정점, 그 정점과의 거리)를 저장하는 pair들의 벡터들을 저장하는 벡터
-vector<vector<tili>> dp;     // 각 정점에 대해 (인접 노드, 인접 노드를 루트로 하는 서브트리에 있는 모든 정점과 해당 정점과의 거리 총합, 해당 정점 아래로 존재하는 노드 개수) 
+vector<vector<pii>> edges;   // 각 노드 v에 대해 (인접 노드, v와의 거리)를 저장하는 pair들의 벡터들을 저장하는 벡터
+vector<vector<tili>> dp;     // 각 노드 v에 대해 (인접 노드, 인접 노드를 루트로 하는 서브트리에 있는 모든 노드들과 v 사이 거리의 총합, v 아래로 존재하는 노드 개수)
 vector<vector<int>> dpIndex;
 vector<bool> visited;
 
@@ -29,7 +29,7 @@ pli DFS(long long distance, int currentNode)
         if (visited[childNode] == false)
         {
             visited[childNode] = true;
-            if (dp[currentNode].size() == 0 || dpIndex[currentNode][i] == -1)
+            if (dpIndex[currentNode][i] == -1)
             {
                 pli tmp = DFS(distance + edges[currentNode][i].second, childNode);
                 result += tmp.first;
