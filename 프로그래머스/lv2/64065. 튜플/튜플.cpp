@@ -87,13 +87,3 @@ vector<int> solution(string s)
 
 	return answer;
 }
-
-int main(void) 
-{
-	ios::sync_with_stdio(false);
-	cin.tie(); cout.tie();
-
-	string s = "{{123}}";
-	solution(s);
-	return 0;
-}
