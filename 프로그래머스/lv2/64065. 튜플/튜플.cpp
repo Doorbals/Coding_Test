@@ -46,8 +46,7 @@ bool compare(vector<int> v1, vector<int> v2)
 vector<int> solution(string s)
 {
 	// '{' 삭제
-	replace(s.begin(), s.end(), '{', ' ');
-	s.erase(remove(s.begin(), s.end(), ' '), s.end());	// remove 하면 해당 문자가 삭제됐을 때의 문자열 길이 기준으로 마지막 위치 리턴함 						// -> s.erase(remove(), s.end())하면 삭제된 부분의 길이만큼 사이즈 줄어듦.
+	s.erase(remove(s.begin(), s.end(), '{'), s.end());	// remove 하면 해당 문자가 삭제됐을 때의 문자열 길이 기준으로 마지막 위치 리턴함 						// -> s.erase(remove(), s.end())하면 삭제된 부분의 길이만큼 사이즈 줄어듦.
 
 	// "},"을 "/"으로 교체 
 	while (s.find("},") != string::npos)
