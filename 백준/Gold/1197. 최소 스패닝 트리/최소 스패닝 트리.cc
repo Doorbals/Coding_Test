@@ -1,4 +1,3 @@
-// 크루스칼 알고리즘 파일 주석 확인하면 자세히 알 수 있음.
 #include <iostream>
 #include <vector>
 #include <algorithm>
