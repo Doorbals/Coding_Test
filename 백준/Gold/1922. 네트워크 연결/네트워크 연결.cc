@@ -16,7 +16,7 @@ void prim(int n)
 	priority_queue<pii, vector<pii>, greater<pii>> pq;
 	int i = 1, count = 1;
 
-	while (true)
+	while (count < n)
 	{
 		mst[i] = true;
 
@@ -26,7 +26,7 @@ void prim(int n)
 			if (!mst[curNode])
 				pq.push(edges[i][j]);
 		}
-
+		
 		for (int k = 0; k < pq.size(); k++)
 		{
 			pii curEdge = pq.top();
@@ -37,12 +37,12 @@ void prim(int n)
 				minCost += curEdge.first;
 				count++;
 				break;
-			}	
+			}
 		}
-		if (count == n)
-			return;
 	}
+	return;
 }
+
 
 int main()
 {
@@ -57,7 +57,7 @@ int main()
 	{
 		int a, b, c;
 		cin >> a >> b >> c;
-		
+
 		edges[a].push_back(pii(c, b));
 		edges[b].push_back(pii(c, a));
 	}
