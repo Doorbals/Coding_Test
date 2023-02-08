@@ -8,7 +8,7 @@
 using namespace std;
 vector<long long> candies;
 
-long long binarySearch(long long sum, long long m, long long max)
+long long binarySearch(long long m, long long max)
 {
 	long long start = 1, end = max;
 	long long answer = 0;
@@ -24,7 +24,7 @@ long long binarySearch(long long sum, long long m, long long max)
 		
 		if (curCount < m)		// 가방 개수 너무 많으면 한 가방 내 사탕 개수 못 채움 -> mid 이상 개수는 불가능. 그 아래 탐색
 			end = mid - 1;
-		else                   //  가방 개수 딱 맞거나 너무 작으면 한 가방 내 사탕 개수 채움 -> 현재 가방 개수를 answer로 설정하고 그 위 값도 탐색
+		else                   //  가방 개수 딱 맞거나 너무 적으면 한 가방 내 사탕 개수 채움 -> 현재 가방 개수를 answer로 설정하고 그 위 값도 탐색
 		{
 			answer = mid;
 			start = mid + 1;
@@ -43,7 +43,7 @@ int main()
 
 	for (int i = 0; i < t; i++)
 	{
-		long long n, m, sum = 0;
+		long long n, m;
 		cin >> n >> m;
 		long long max = 0;
 		for (int j = 0; j < n; j++)
@@ -51,13 +51,12 @@ int main()
 			long long num;
 			cin >> num;
 			candies.push_back(num);
-			sum += num;
 
 			if (max < num)
 				max = num;
 		}
 
-		cout << '#' << i + 1 << ' ' << binarySearch(sum, m, max) << endl;
+		cout << '#' << i + 1 << ' ' << binarySearch(m, max) << endl;
 		candies.clear();
 	}
 }
