@@ -6,14 +6,12 @@
 #include <cmath>
 
 using namespace std;
-int days[200001];
-int maxPeriod;
+int days[200001];		// 공부한 날짜들 저장
+int maxPeriod;			// 최대 연속 기간
 vector<int> blanks;		// days의 첫 날짜부터 다른 날짜까지 공백(문제 안 푼 날)을 저장 (ex. [1]에는 days[0] ~ days[1] 사이의 안 푼 일수) 
 
 int binary_search(int n, int p)
 {
-	vector<int> answers;	// 각 날짜에서 시작했을 때 가장 긴 연속 기간을 저장
-
 	// days[i] 날짜부터 시작했을 때 가장 긴 연속 기간을 이진 탐색으로 구한다.
 	for (int i = 0; i < n; i++)
 	{
@@ -35,13 +33,11 @@ int binary_search(int n, int p)
 				start = mid + 1;
 			}
 		}
-		answers.push_back(answer);
 		if (maxPeriod < answer)
 			maxPeriod = answer;
 	}
 	return maxPeriod;
 }
-
 
 int main()
 {
