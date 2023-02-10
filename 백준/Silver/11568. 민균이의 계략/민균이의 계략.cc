@@ -1,14 +1,10 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
-#include <tuple>
-#include <queue>
-#include <cmath>
-using namespace std;
-int dp[1001];
-int cards[1001];
 
-void solution(int n)
+using namespace std;
+int cards[1001];
+int dp[1001];
+
+int solution(int n)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -16,11 +12,19 @@ void solution(int n)
 		{
 			if (cards[j] < cards[i])
 			{
-				if(dp[i] < dp[j] + 1)	
+				if (dp[i] < dp[j] + 1)
 					dp[i] = dp[j] + 1;
 			}
 		}
 	}
+
+	int max = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (max < dp[i])
+			max = dp[i];
+	}
+	return max;
 }
 
 int main()
@@ -38,15 +42,5 @@ int main()
 		dp[i] = 1;
 	}
 
-	solution(n);
-		
-	int max = 0;
-	for (int i = 0; i < n; i++)
-	{
-		if (dp[i] > max)
-			max = dp[i];
-	}
-	cout << max;
-
-	return 0;
+	cout << solution(n);
 }
