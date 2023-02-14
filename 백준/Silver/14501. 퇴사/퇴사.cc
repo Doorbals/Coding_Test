@@ -1,53 +1,41 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <tuple>
 #include <queue>
+#include <cmath>
 
 using namespace std;
 typedef pair<int, int> pii;
-pii consultings[16];
 int dp[16];
-
-int solution(int start, int n)
-{
-	if (dp[start] == -1)
-	{
-		int max = 0;
-		for (int i = start + consultings[start].first; i <= n + 1; i++)
-		{
-			int curProfit = consultings[start].second + solution(i, n);
-			if (max < curProfit)
-				max = curProfit;
-		}
-		dp[start] = max;
-		return max;
-	}
-	else
-		return dp[start];
-}
+vector<pii> consultings;
 
 int main()
 {
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr); cout.tie(nullptr);
+
 	int n;
-	scanf("%d", &n);
+	cin >> n;
 
+	consultings.push_back(pii(0, 0));
 	for (int i = 1; i <= n; i++)
 	{
-		int t, p;
-		scanf("%d %d", &t, &p);
-		consultings[i] = pii(t, p);
+		int a, b;
+		cin >> a >> b;
+		consultings.push_back(pii(a, b));
 	}
 
-	for (int i = 1; i <= n; i++)
-		dp[i] = -1;
-	
-	int max = 0;
-	for (int i = 1; i <= n; i++)
+	for (int i = 1; i <= n + 1; i++)
 	{
-		int curProfit = solution(i, n);
-		if (max < curProfit)
-			max = curProfit;
+		for (int j = 1; j < i; j++)
+		{
+			if (i >= j + consultings[j].first)
+			{
+				dp[i] = max(dp[i], dp[j] + consultings[j].second);
+			}
+		}
 	}
-	cout << max;
-	return 0;
+
+	cout << dp[n + 1];
 }
