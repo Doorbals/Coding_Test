@@ -3,13 +3,12 @@
 #include <algorithm>
 #include <tuple>
 #include <queue>
-#include <cmath>
 
 using namespace std;
 typedef pair<int, int> pii;
-vector<vector<pii>> edges;	// 각 노드에 연결된 간선들에 대한 정보 (거리, 상대 노드) 저장 
-vector<char> mORn;			// 남대인지 여대인지 저장
-bool mst[1001];				// mst에 포함되어있는지 여부
+vector<vector<pii>> edges;
+vector<char> mORn;			
+bool mst[1001];			
 int n, m;
 
 int prim()
