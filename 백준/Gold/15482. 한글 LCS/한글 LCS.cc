@@ -5,7 +5,7 @@
 #include <cmath>
 
 using namespace std;
-int dp[1002][1002];
+int dp[1001][1001];
 vector<char> string1;
 vector<char> string2;
 int longest = 0;
