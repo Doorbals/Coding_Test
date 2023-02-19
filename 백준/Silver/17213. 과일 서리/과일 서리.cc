@@ -6,7 +6,7 @@
 #include <cmath>
 
 using namespace std;
-int dp[31][31];
+int dp[11][31];
 
 int solution(int n, int m)
 {
