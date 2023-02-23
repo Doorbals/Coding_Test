@@ -1,8 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <tuple>
-#include <queue>
 #include <cmath>
 
 using namespace std;
