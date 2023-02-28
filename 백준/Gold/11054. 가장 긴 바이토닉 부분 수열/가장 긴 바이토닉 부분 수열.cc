@@ -17,26 +17,19 @@ int solution(int n)
 		for (int j = 1; j < i; j++)
 		{
 			if (nums[i] > nums[j] && dp1[j] + 1 > dp1[i])
-			{
 				dp1[i] = dp1[j] + 1;
-			}
 
 			if (nums2[i] > nums2[j] && dp2[j] + 1 > dp2[i])
-			{
 				dp2[i] = dp2[j] + 1;
-			}
 		}
 	}
 
 	int maxValue = 0;
-	for (int i = 1; i <= n; i++)
+	for (int i = 0; i <= n; i++)
 	{
-		for (int j = 0; j <= n - i; j++)
-		{
-			int sum = dp1[i] + dp2[j];
-			if (maxValue < sum && nums[i] != nums2[j])
-				maxValue = sum;
-		}
+		int sum = dp1[i] + dp2[n - i + 1] - 1;
+		if (maxValue < sum)
+			maxValue = sum;
 	}
 	return maxValue;
 }
