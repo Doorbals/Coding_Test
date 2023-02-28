@@ -3,7 +3,7 @@
 using namespace std;
 
 int n;
-long long dp[1001][10];		// dp[i][j] : i자리 오르막 수 중 j로 끝나는 수의 개수 
+int dp[1001][10];		// dp[i][j] : i자리 오르막 수 중 j로 끝나는 수의 개수 
 const int MOD = 10007;
 
 int solution() 
