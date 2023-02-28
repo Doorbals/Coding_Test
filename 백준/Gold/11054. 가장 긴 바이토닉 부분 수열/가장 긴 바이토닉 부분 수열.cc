@@ -1,10 +1,7 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
-#include <tuple>
-#include <queue>
-#include <cmath>
 using namespace std;
+
 int nums[1001];
 int nums2[1001];
 int dp1[1001];		
