@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <tuple>
+#include <queue>
 #include <cmath>
 
 using namespace std;
@@ -21,16 +23,7 @@ int solution()
 		}
 	}
 
-	int max = 0;
-	for (int i = 1; i <= string1.size(); i++)
-	{
-		for (int j = 1; j <= string2.size(); j++)
-		{
-			if (max < dp[i][j])
-				max = dp[i][j];
-		}
-	}
-	return max;
+	return dp[string1.size()][string2.size()];
 }
 
 int main()
