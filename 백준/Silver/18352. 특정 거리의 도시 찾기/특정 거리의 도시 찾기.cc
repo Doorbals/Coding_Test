@@ -6,7 +6,7 @@ using namespace std;
 typedef pair<int, int> pii;
 
 int n, m, k, start;			// 노드의 개수, 간선의 개수, 거리 정보, 시작 노드 번호
-vector<pii> graph[300001];	// 그래프 데이터 저장 (노드 개수는 최대 100000개)
+vector<vector<pii>> graph;	// 그래프 데이터 저장 (노드 개수는 최대 100000개)
 int d[300001];				// 최단 거리 테이블
 const long long INF = 1e9;	// 무한을 의미하는 값
 
@@ -44,7 +44,7 @@ int main()
 	cin.tie(nullptr); cout.tie(nullptr);
 
 	cin >> n >> m >> k >> start;
-
+	graph.resize(n + 1);
 	// 간선 정보 입력 받기
 	for (int i = 0; i < m; i++)
 	{
