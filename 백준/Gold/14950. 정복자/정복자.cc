@@ -56,6 +56,7 @@ int main()
 		parent[i] = i;
 	
 	int sum = 0;
+	int count = 0;
 	for (int i = 0; i < edges.size(); i++)
 	{
 		int curA = get<1>(edges[i]);
@@ -65,8 +66,8 @@ int main()
 		{
 			unionParent(curA, curB);
 			sum += get<0>(edges[i]);
-			for (int j = 0; j < edges.size(); j++)
-				get<0>(edges[j]) += t;
+			sum += t * count;
+			count++;
 		}
 	}
 
