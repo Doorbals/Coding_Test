@@ -1,13 +1,10 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
-#include <queue>
-#include <tuple>
-#include <cmath>
 #include <string>
 #include <list>
 using namespace std;
 
+// 문자열을 두 글자씩 끊어서 다중 집합 만들기 (특수 문자 들어간 집합 제외)
 list<string> split(string str)
 {
 	list<string> splited;
@@ -29,29 +26,10 @@ list<string> split(string str)
 	return splited;
 }
 
-int getIntersection(list<string> set1, list<string> set2)
+// 교집합과 합집합의 수 세기
+pair<int, int> countSet(list<string> set1, list<string> set2)
 {
-	int count = 0;
-	while (!set1.empty() && !set2.empty())
-	{
-		auto it_1 = set1.begin();
-		auto it_2 = find(set2.begin(), set2.end(), *it_1);
-		bool isAlpha = true;
-		if (it_2 != set2.end())
-		{
-			set1.erase(it_1);
-			set2.erase(it_2);
-			count++;
-		}
-		else
-			set1.erase(it_1);	
-	}
-	return count;
-}
-
-int getUnion(list<string> set1, list<string> set2)
-{
-	int count = 0;
+	int intersectionCnt = 0, unionCnt = 0;
 	while (!set1.empty())
 	{
 		auto it_1 = set1.begin();
@@ -60,21 +38,22 @@ int getUnion(list<string> set1, list<string> set2)
 		{
 			set1.erase(it_1);
 			set2.erase(it_2);
-			count++;
+			intersectionCnt++;
+			unionCnt++;
 		}
 		else
 		{
 			set1.erase(it_1);
-			count++;
+			unionCnt++;
 		}
 	}
 	while (!set2.empty())
 	{
 		auto it = set2.begin();
 		set2.erase(it);
-		count++;
+		unionCnt++;
 	}
-	return count;
+	return {intersectionCnt, unionCnt};
 }
 
 int solution(string str1, string str2) 
@@ -89,18 +68,14 @@ int solution(string str1, string str2)
 	list<string> set2 = split(str2);
 
 	int intersectionCnt, unionCnt;
+	pair<int, int> result;
 	if (str1.size() > str2.size())
-	{
-		intersectionCnt = getIntersection(set1, set2);
-		unionCnt = getUnion(set1, set2);
-	}
+		result = countSet(set1, set2);
 	else
-	{
-		intersectionCnt = getIntersection(set2, set1);
-		unionCnt = getUnion(set2, set1);
-	}
+		result = countSet(set2, set1);
+	intersectionCnt = result.first;
+	unionCnt = result.second;
 		
-	cout << intersectionCnt << ' ' << unionCnt << endl;
 	if (intersectionCnt == 0 && unionCnt == 0)
 		return 65536;
 	else
@@ -113,8 +88,8 @@ int main()
 	cin.tie(nullptr); cout.tie(nullptr);
 
 	string str1, str2;
-	str1 = "baa";
-	str2 = "aaa";
+	str1 = "FRANCE";
+	str2 = "french";
 
 	cout << solution(str1, str2);
 }
