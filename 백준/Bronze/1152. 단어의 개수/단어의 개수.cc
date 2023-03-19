@@ -15,16 +15,18 @@ int main()
 		str.erase(str.begin());
 	if (str[str.size() - 1] == ' ')
 		str.erase(str.end() - 1);
-	
-	vector<string> result;
-	stringstream ss;
-	string stringBuffer;
-	ss.str(str);
-	while (getline(ss, stringBuffer, ' '))
-	{
-		if(stringBuffer != " ")
-			result.push_back(stringBuffer);
-	}
 
-	cout << result.size();
+	int count = 0;
+	bool existAlpha = false;
+	for (int i = 0; i < str.size(); i++)
+	{
+		if (str[i] == ' ')
+			count++;
+		else
+			existAlpha = true;
+	}
+	if (existAlpha)
+		cout << count + 1;
+	else
+		cout << 0;
 }
