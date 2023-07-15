@@ -27,8 +27,9 @@ void DFS(int y, int x, int depth, int count)
 		if(count >= 2)
 		{
 			isMoreThan2 = true;
+			visited[y][x] = false;
+			return;
 		}
-		return;
 	}
 
 	for (int i = 0; i < 4; i++)
@@ -50,9 +51,11 @@ void DFS(int y, int x, int depth, int count)
 		else
 			DFS(nextY, nextX, depth + 1, count);
 
-		visited[nextY][nextX] = false;	// 다른 경로와 해당 노드를 공유하는 경우를 위해서 visited를 false로 되돌려줌.
+		//visited[nextY][nextX] = false;
 	}
 	
+	visited[y][x] = false;
+
 	if (depth == 0)
 	{
 		if (isMoreThan2)
