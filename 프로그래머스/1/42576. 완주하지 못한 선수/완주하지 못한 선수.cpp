@@ -1,36 +1,23 @@
 #include <iostream>
-#include <string>
 #include <vector>
-#include <algorithm>
-#include <map>
+#include <set>
 
 using namespace std;
 
 string solution(vector<string> participant, vector<string> completion) {
 	string answer = "";
-	map<string, int> m;
-    
-    for(int i = 0; i < completion.size(); i++)
-    {
-        m[completion[i]] += 1;
-    }
+	multiset<string> s;
     
     for(int i = 0; i < participant.size(); i++)
     {
-        if(m.find(participant[i]) == m.end())
-        {
-            return participant[i];
-        }
-        else
-        {
-            if(m[participant[i]] <= 0)
-            {
-                return participant[i];
-            }
-            else
-            {
-                m[participant[i]] -= 1;
-            }
-        }
+        s.insert(participant[i]);
     }
+    
+    for(int i = 0; i < completion.size(); i++)
+    {
+        auto it = s.find(completion[i]);
+        s.erase(it);
+    }
+    
+    return *s.begin();
 }
