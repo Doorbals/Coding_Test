@@ -5,7 +5,6 @@ using namespace std;
 
 int solution(vector<int> nums)
 {
-    int answer = 0;
     int max = nums.size() / 2;
     set<int> s;
     
