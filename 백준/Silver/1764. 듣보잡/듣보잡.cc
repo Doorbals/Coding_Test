@@ -3,6 +3,7 @@
 #include <iostream>
 #include <algorithm>
 #include <set>
+#include <map>
 
 using namespace std;
 
@@ -14,23 +15,27 @@ int main()
 	int n, m;
 	cin >> n >> m;
 	set<string> s;
+	map<string, int> info;
 	vector<string> answer;
 
+	string name;
 	for (int i = 0; i < n; i++)
 	{
-		string name;
 		cin >> name;
-		s.insert(name);
+		++info[name];
 	}
 
 	for (int i = 0; i < m; i++)
 	{
-		string name;
 		cin >> name;
-		set<string>::iterator findIt = s.find(name);
-		if (findIt != s.end())
+		++info[name];
+	}
+
+	for (auto it = info.begin(); it != info.end(); ++it)
+	{
+		if (it->second == 2)
 		{
-			answer.push_back(name);
+			answer.push_back(it->first);
 		}
 	}
 
