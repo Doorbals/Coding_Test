@@ -26,7 +26,7 @@ bool iicmp(pair<int, int> a, pair<int, int> b)
 vector<int> solution(vector<string> genres, vector<int> plays) 
 {
     vector<int> answer;
-    vector<string> genreRank; 
+
     map<string, int> totalPlays;   
     multimap<string, pair<int, int>> playsByGenre;
 
@@ -36,19 +36,14 @@ vector<int> solution(vector<string> genres, vector<int> plays)
         playsByGenre.insert(make_pair(genres[i], make_pair(plays[i], i)));
     }
 
-    vector<pair<string, int>> temp(totalPlays.begin(), totalPlays.end());
-    sort(temp.begin(), temp.end(), sicmp);
-
-    for (auto it = temp.begin(); it != temp.end(); ++it)
-    {
-        genreRank.push_back(it->first);
-    }
+    vector<pair<string, int>> genreRank(totalPlays.begin(), totalPlays.end());
+    sort(genreRank.begin(), genreRank.end(), sicmp);
 
     for (int i = 0; i < genreRank.size(); i++)
     {
         vector<pair<int, int>> curGenre;
-        auto beginIt = playsByGenre.lower_bound(genreRank[i]);
-        auto endIt = playsByGenre.upper_bound(genreRank[i]);
+        auto beginIt = playsByGenre.lower_bound(genreRank[i].first);
+        auto endIt = playsByGenre.upper_bound(genreRank[i].first);
 
         for (auto it = beginIt; it != endIt; ++it)
         {
