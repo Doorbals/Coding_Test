@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 
 using namespace std;
 
-map<string, int> pocketmonMap;
+unordered_map<string, int> pocketmonMap;
 vector<string> pocketmonVec;
 
 int main()
@@ -40,3 +40,4 @@ int main()
 
 	return 0;
 }
+
